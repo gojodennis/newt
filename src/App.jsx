@@ -36,9 +36,10 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <div className="profile-icon"></div>
-        <h2>Grocee</h2>
-        <div className="notification-icon"></div>
+        <div>
+          <p className="welcome-text">Welcome to</p>
+          <h2>Grocee</h2>
+        </div>
       </div>
 
       <div className="summary-cards">
@@ -52,6 +53,12 @@ function App() {
                 className="budget-value"
                 contentEditable="true"
                 onBlur={(e) => setBudget(parseFloat(e.target.textContent))}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    e.target.blur();
+                  }
+                }}
                 suppressContentEditableWarning={true}
               >
                 {budget}

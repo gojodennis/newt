@@ -2,26 +2,28 @@ import React, { useEffect } from 'react';
 
 const getEmoji = (itemName) => {
   const lowerCaseItem = itemName.toLowerCase();
-  if (lowerCaseItem.includes('pet') || lowerCaseItem.includes('dog') || lowerCaseItem.includes('cat')) {
+  if (lowerCaseItem.includes('cat')) {
+    return '🐱';
+  } else if (['pet', 'dog'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '🐶';
-  } else if (lowerCaseItem.includes('coffee') || lowerCaseItem.includes('starbucks')) {
+  } else if (['coffee', 'starbucks'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '☕';
-  } else if (lowerCaseItem.includes('house') || lowerCaseItem.includes('repair') || lowerCaseItem.includes('contractor')) {
+  } else if (['house', 'repair', 'contractor'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '🛠️';
-  } else if (lowerCaseItem.includes('commute') || lowerCaseItem.includes('uber') || lowerCaseItem.includes('taxi')) {
+  } else if (['commute', 'uber', 'taxi'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '🚕';
-  } else if (lowerCaseItem.includes('nike') || lowerCaseItem.includes('clothing') || lowerCaseItem.includes('shirt') || lowerCaseItem.includes('shoes')) {
+  } else if (['nike', 'shirt', 'tshirt', 'clothes', 'kapur', 'shoes'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '👕';
-  } else if (lowerCaseItem.includes('food') || lowerCaseItem.includes('restaurant') || lowerCaseItem.includes('pizza')) {
+  } else if (['food', 'restaurant', 'pizza'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '🍔';
-  } else if (lowerCaseItem.includes('transport') || lowerCaseItem.includes('bus') || lowerCaseItem.includes('train')) {
+  } else if (['transport', 'bus', 'train'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '🚌';
-  } else if (lowerCaseItem.includes('groceries') || lowerCaseItem.includes('supermarket')) {
+  } else if (['groceries', 'supermarket'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '🛒';
-  } else if (lowerCaseItem.includes('entertainment') || lowerCaseItem.includes('movie') || lowerCaseItem.includes('game')) {
+  } else if (['entertainment', 'movie', 'game'].some(keyword => lowerCaseItem.includes(keyword))) {
     return '🎬';
   } else {
-    return '💸'; // Default emoji
+    return '✅'; // Default emoji
   }
 };
 
@@ -61,6 +63,7 @@ const CartTracking = ({ budget, setTotalSpending, item, price, setItem, setPrice
                 <span className="item-name">{cartItem.item}</span>
               </div>
               <span className="item-price">-₹{cartItem.price}</span>
+              <button onClick={() => handleDeleteItem(cartItem.id)} className="delete-button">X</button>
             </li>
           ))}
         </ul>
